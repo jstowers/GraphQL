@@ -1,38 +1,36 @@
 # GraphQL
 
-GraphQL is a query language for making efficient API requests to databases.
+GraphQL is an API query language designed to make efficient database requests.
 
-Developed by Facebook, GraphQL uses graphs to organize data.
+Developed by Facebook, GraphQL uses __graphs__ to organize and retrieve data.
 
 Reference: _GraphQL with React: The Complete Developer's Guide_, Stephen Grider, Udemy
 
-
-## Start Up Servers & GraphiQL Interface
-
-You will need to start up two servers to make GraphQL requests:
-
-1. GraphQL - an Express server that GraphQL uses to make HTTP Requests
-2. JSON-Server - a mock database server that stores JSON data
-
 ---
 
-### 1. GraphQL / Express Server
+## Spin Up Servers & GraphiQL Interface
 
-+ GraphQL uses this server and Express to make HTTP Requests
-+ Server listens on Port 4000
+You will need to spin up two servers to make GraphQL requests:
+
+    1. GraphQL - an Express server that GraphQL uses to make HTTP Requests
+    2. JSON-Server - a mock database server that stores JSON data
+
+### GraphQL / Express Server
+
++ GraphQL uses an Express server to make HTTP Requests
++ In a new terminal window, start the server:
 
 ```
     $ npm run dev
-
 ```
-
++ Server listens on Port 4000
 + In a browser tab, navigate to the GraphiQL query interface:
 
 ```
     http://localhost:4000/graphql
 ```
 
-### 2. JSON-Server
+### JSON-Server
 
 + This nifty npm package provides a mock data store from which GraphQL can make CRUD requests
 
@@ -71,13 +69,13 @@ You will need to start up two servers to make GraphQL requests:
     }
 ```
 
-+ In a new terminal window, start the json server:
++ In a new terminal window, start JSON-Server:
 
 ```
     $ npm run json:server
 ```
 
-+ This server will be running and listening on Port 3000
++ Server listens on Port 3000
 
 + Open a new browser tab and navigate to this URL to see your users data:
 
