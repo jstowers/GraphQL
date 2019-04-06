@@ -10,6 +10,7 @@ const {
     GraphQLInt,
     GraphQLSchema,
     GraphQLList,
+    GraphQLNonNull
 } = graphql;
 
 
@@ -121,23 +122,48 @@ const mutation = new GraphQLObjectType({
     name: 'Mutation',
     fields: {
         addUser: {
-            // type refers to the data we'll eventually return from the resolve function
+            // type refers to the data eventualy returned from the resolve function
             // won't always return the same type as what we're working on
             type: UserType,
             // when call addUser, should pass along the following arguments
+            // GraphQLNonNull - validation to ensure that an argument is provided
             args: {
+                firstName: { type: new GraphQLNonNull(GraphQLString) },
+                age: { type: new GraphQLNonNull(GraphQLInt) },
+                companyId: { type: GraphQLString }
+            },
+            resolve(parentValue, {firstName, age}) {
+                return axios.post(`http://localhost:3000/users`, { firstName, age })
+                    .then(res => res.data);
+            }
+        },
+        deleteUser: {
+            type: UserType,
+            args: { 
+                id: { type: new GraphQLNonNull(GraphQLString) } 
+            },
+            resolve(parentValue, {id}) {
+                return axios.delete(`http://localhost:3000/users/${id}`, { id })
+                    .then(res => res.data);
+            }
+        },
+        editUser: {
+            type: UserType,
+            args: {
+                id: { type: new GraphQLNonNull(GraphQLString) },
                 firstName: { type: GraphQLString },
                 age: { type: GraphQLInt },
                 companyId: { type: GraphQLString }
             },
-            resolve() {
-
+            resolve(parentValue, args) {
+                return axios.patch(`http://localhost:3000/users/${args.id}`, args);
             }
         }
     }
 });
 
 module.exports = new GraphQLSchema({
+    mutation,
     query: RootQuery
 });
 
