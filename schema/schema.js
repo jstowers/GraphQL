@@ -117,6 +117,26 @@ function createErrorMessage(err, id) {
     }
 }
 
+const mutation = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: {
+        addUser: {
+            // type refers to the data we'll eventually return from the resolve function
+            // won't always return the same type as what we're working on
+            type: UserType,
+            // when call addUser, should pass along the following arguments
+            args: {
+                firstName: { type: GraphQLString },
+                age: { type: GraphQLInt },
+                companyId: { type: GraphQLString }
+            },
+            resolve() {
+
+            }
+        }
+    }
+});
+
 module.exports = new GraphQLSchema({
     query: RootQuery
 });

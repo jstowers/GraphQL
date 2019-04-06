@@ -20,13 +20,13 @@ You will need to spin up two servers to make GraphQL requests:
 + GraphQL uses an Express server to make HTTP Requests
 + In a new terminal window, start the server:
 
-```
+``` markdown
     $ npm run dev
 ```
 + Server listens on Port 4000
 + In a browser tab, navigate to the GraphiQL query interface:
 
-```
+``` markdown
     http://localhost:4000/graphql
 ```
 
@@ -34,9 +34,9 @@ You will need to spin up two servers to make GraphQL requests:
 
 + This nifty npm package provides a mock data store from which GraphQL can make CRUD requests
 
-+ To install the library, run the following terminal command:
++ To install the library, open a new terminal window run:
 
-```
+``` markdown
     $ npm install --save json-server
 ```
 
@@ -69,9 +69,9 @@ You will need to spin up two servers to make GraphQL requests:
     }
 ```
 
-+ In a new terminal window, start JSON-Server:
++ Start the JSON-Server:
 
-```
+``` markdown
     $ npm run json:server
 ```
 
@@ -79,6 +79,6 @@ You will need to spin up two servers to make GraphQL requests:
 
 + Open a new browser tab and navigate to this URL to see your users data:
 
-```
+``` markdown
     http://localhost:3000/users
 ```
